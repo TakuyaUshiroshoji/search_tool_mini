@@ -1,28 +1,13 @@
-import json
+from loader import load_items
+from searcher import search_items
+from writter import save_results
 
-items = []
-with open('data.txt', 'r', encoding='utf-8') as file:
-    for line in file:
-        items.append(line.strip())
+def main():
+    items = load_items('data.txt')
+    keyword = input("検索したいワードを入力してください : ")
+    hits = search_items(items, keyword)
+    print(len(hits), "件ヒットしました。")
+    save_results('search_result.json', keyword, hits)
 
-keyword = input("検索したいワードを入力してください : ")
-
-search_result = []
-total_number = 0
-for item in items:
-    if keyword in item:
-        print("一致:", item)
-        search_result.append(item)
-        total_number += 1
-
-print(total_number, "件ヒットしました。")
-
-data = {
-    "keyword": keyword,
-    "hits": search_result,
-    "count": total_number
-}
-with open('search_result.json', 'w', encoding='utf-8') as out_file:
-    json.dump(data, out_file, ensure_ascii=False, indent=2)
-
-print("search_result.json に保存しました。")
+if __name__ == "__main__":
+    main()
