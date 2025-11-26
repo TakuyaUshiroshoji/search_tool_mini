@@ -1,8 +1,9 @@
-def search_items(items, keyword):
-    """"itemsの中からkeywordで検索して結果を返す"""
+def search_items(items, keywords):
+    """"itemsの中からkeywordsでOR検索して結果を返す"""
     results = []
     for item in items:
-        if keyword.lower() in item.lower():
-            results.append(item)
+        lower_item = item.lower()
 
+        if any(kw.lower() in lower_item for kw in keywords):
+            results.append(item)
     return results
