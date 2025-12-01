@@ -1,6 +1,6 @@
 import json
 
-def save_results(file_path, keyword, hits):
+def save_json(file_path, keyword, hits):
     """jsonファイルに検索結果を保存する"""
     data = {
         "keyword": keyword,

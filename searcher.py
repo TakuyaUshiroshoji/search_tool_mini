@@ -1,5 +1,5 @@
 def or_search_items(items, keywords):
-    """"itemsの中からkeywordsでOR検索して結果を返す"""
+    """itemsの中からkeywordsでOR検索して結果を返す"""
     results = []
     for item in items:
         lower_item = item.lower()
@@ -9,7 +9,7 @@ def or_search_items(items, keywords):
     return results
 
 def and_search_items(items, keywords):
-    """"itemsの中からkeywordsでAND検索して結果を返す"""
+    """itemsの中からkeywordsでAND検索して結果を返す"""
     results = []
     for item in items:
         lower_item = item.lower()
