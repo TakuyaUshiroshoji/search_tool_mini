@@ -2,26 +2,10 @@ from loader import load_items
 from searcher import or_search_items, and_search_items
 from writter_json import save_json
 from writter_csv import save_csv
-
-import argparse
+from cli import get_parser
 
 def main():
-    parser = argparse.ArgumentParser(description="検索ツール")
-    parser.add_argument(
-        "--mode",
-        choices=["AND", "OR"],
-        default="AND",
-        help="AND検索 or OR検索を選択"
-        )
-    
-    parser.add_argument(
-        "--keywords",
-        required=True,
-        nargs="+",
-        help="検索キーワード(複数可)"
-        )
-    
-    args = parser.parse_args()
+    args = get_parser().parse_args()
     print(args.mode)
     print(args.keywords)
 
